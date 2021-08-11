@@ -1,0 +1,13 @@
+node ('GOL'){
+    stage ('SCM'){
+        git 'https://github.com/Kullay851/game-of-life.git'
+    }
+    stage('build'){
+        sh 'mvn clean package'
+    }
+    stage('post build'){
+       junit '**/TEST-*.xml'
+       archive '**/*.war'
+    }
+}
+
