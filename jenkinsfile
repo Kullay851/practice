@@ -1,4 +1,4 @@
-node ('MASTER'){
+node ('RHEL'){
     stage ('SCM'){
         git 'https://github.com/Kullay851/game-of-life.git'
     }
