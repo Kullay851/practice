@@ -1,5 +1,5 @@
-node ('GOL'){
-    stage ('MASTER'){
+node ('MASTER'){
+    stage ('SCM'){
         git 'https://github.com/Kullay851/game-of-life.git'
     }
     stage('build'){
