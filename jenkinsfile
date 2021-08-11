@@ -3,7 +3,7 @@ node ('MASTER'){
         git 'https://github.com/Kullay851/game-of-life.git'
     }
     stage('build'){
-        sh 'mvn clean package'
+        sh 'mvn package'
     }
     stage('post build'){
        junit '**/TEST-*.xml'
