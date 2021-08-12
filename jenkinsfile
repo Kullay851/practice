@@ -1,13 +1,32 @@
-node ('RHEL,'){
-    stage ('SCM'){
-        git 'https://github.com/Kullay851/game-of-life.git'
+pipeline {
+    agent { label 'GOL'}
+    triggers {
+        cron('H * * * *')
+        pollSCM('* * * * *')
     }
-    stage('build'){
-        sh 'mvn package'
+    parameters {
+       
+        choice(name: 'CHOICE', choices: ['master', 'continous-delivery', 'continous-delivery-demo'], description: 'Pick something')
+
     }
-    stage('post build'){
-       junit '**/TEST-*.xml'
-       archive '**/*.war'
+    stages {
+        stage('scm') {
+            steps {
+                
+                git branch: '${params.CHOICE}', url: 'https://github.com/asquarezone/game-of-life.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+    post {
+        success {
+            archive '**/gameoflife.war'
+            junit '**/TEST-*.xml'
+        }
+        
     }
 }
-
