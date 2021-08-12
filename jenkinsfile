@@ -1,9 +1,9 @@
 pipeline {
     agent { label 'GOL'}
-    triggers {
+    //triggers {
       //  cron('H * * * *')
        // pollSCM('* * * * *')
-    }
+    //}
     parameters {
        
         choice(name: 'CHOICE', choices: ['master', 'continous-delivery', 'continous-delivery-demo'], description: 'Pick something')
