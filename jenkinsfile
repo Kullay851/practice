@@ -20,6 +20,12 @@ pipeline {
             steps {
                 sh 'mvn package'
             }
+            stash includes: '**/gameoflife.war' name: 'golwar'
+        }
+        stage('masterserver')
+        agent {label: 'MASTER'}
+        steps{
+            unstash name: 'golwar' 
         }
     }
     post {
