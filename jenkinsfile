@@ -24,7 +24,7 @@ pipeline {
            
         }
         stage('masterserver'){
-        agent {label: 'MASTER'}
+        agent {label 'MASTER'}
         steps{
             unstash name: 'golwar' 
         }
