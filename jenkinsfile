@@ -1,6 +1,10 @@
 
 //this secnod test for conficcts qand resoving them as merge 
 //comments are not inculdess
+
+//this second conflict resolved
+/comments are not inculdess 
+
 pipeline {
     agent { label 'GOL'}
     //triggers {
