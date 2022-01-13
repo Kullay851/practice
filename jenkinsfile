@@ -1,3 +1,5 @@
+//
+//comments are not inculdess \
 pipeline {
     agent { label 'GOL'}
     //triggers {
