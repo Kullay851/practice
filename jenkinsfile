@@ -1,5 +1,13 @@
+<<<<<<< HEAD
+
+
+
+
+
+=======
 //
 //comments are not inculdess \
+>>>>>>> 70ea05c7b5ab93ec39d4cfc0036265c9793f1b9a
 pipeline {
     agent { label 'GOL'}
     //triggers {
