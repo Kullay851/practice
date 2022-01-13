@@ -1,0 +1,40 @@
+pipeline {
+    agent { label 'GOL'}
+    //triggers {
+      //  cron('H * * * *')
+       // pollSCM('* * * * *')
+    //}
+    parameters {
+       
+        choice(name: 'CHOICE', choices: ['master', 'continous-delivery', 'continous-delivery-demo'], description: 'Pick something')
+
+    }
+    stages {
+        stage('scm') {
+            steps {
+                
+                git branch: "${params.CHOICE}", url: 'https://github.com/Kullay851/game-of-life.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn package'
+                 stash includes: '**/gameoflife.war', name: 'golwar'
+            }
+           
+        }
+        stage('masterserver'){
+        agent {label 'MASTER'}
+        steps{
+            unstash name: 'golwar' 
+        }
+        }
+    }
+    post {
+        success {
+            archive '**/gameoflife.war'
+            junit '**/TEST-*.xml'
+        }
+        
+    }
+}
