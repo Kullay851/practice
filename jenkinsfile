@@ -5,7 +5,12 @@ pipeline {
        // pollSCM('* * * * *')
     //}
     parameters {
-       
+      
+
+
+
+
+
         choice(name: 'CHOICE', choices: ['master', 'continous-delivery', 'continous-delivery-demo'], description: 'Pick something')
 
     }
@@ -35,6 +40,6 @@ pipeline {
             archive '**/gameoflife.war'
             junit '**/TEST-*.xml'
         }
-        
+      //added commetn  
     }
 }
