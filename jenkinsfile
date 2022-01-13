@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 
 
 
 
 
+=======
+//
+//comments are not inculdess \
+>>>>>>> 70ea05c7b5ab93ec39d4cfc0036265c9793f1b9a
 pipeline {
     agent { label 'GOL'}
     //triggers {
@@ -10,7 +15,12 @@ pipeline {
        // pollSCM('* * * * *')
     //}
     parameters {
-       
+      
+
+
+
+
+
         choice(name: 'CHOICE', choices: ['master', 'continous-delivery', 'continous-delivery-demo'], description: 'Pick something')
 
     }
@@ -40,6 +50,6 @@ pipeline {
             archive '**/gameoflife.war'
             junit '**/TEST-*.xml'
         }
-        
+      //added commetn  
     }
 }
