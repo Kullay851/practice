@@ -14,9 +14,8 @@ pipeline {
     }
     stages {
         stage('scm') {
-            steps {
-                
-                git branch: "${params.CHOICE}", url: 'https://github.com/Kullay851/game-of-life.git'
+            steps { 
+                git branch: "${params.CHOICE}", url: ''https://github.com/asquarezone/game-of-life.git'
             }
         }
         stage('build') {
