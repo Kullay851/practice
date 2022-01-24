@@ -6,19 +6,10 @@
 /comments are not inculdess 
 
 pipeline {
-    agent { label 'GOL'}
-    //triggers {
-      //  cron('H * * * *')
-       // pollSCM('* * * * *')
-    //}
+    agent any
+ 
     parameters {
-      
-
-
-
-
-
-        choice(name: 'CHOICE', choices: ['master', 'continous-delivery', 'continous-delivery-demo'], description: 'Pick something')
+      choice(name: 'CHOICE', choices: ['master', 'continous-delivery', 'continous-delivery-demo'], description: 'Pick something')
 
     }
     stages {
@@ -34,11 +25,6 @@ pipeline {
                  stash includes: '**/gameoflife.war', name: 'golwar'
             }
            
-        }
-        stage('masterserver'){
-        agent {label 'MASTER'}
-        steps{
-            unstash name: 'golwar' 
         }
         }
     }
